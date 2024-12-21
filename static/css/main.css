@@ -1,0 +1,174 @@
+:root {
+    /* Primary Colors */
+    --bs-primary: #6200ee;
+    --bs-primary-rgb: 98, 0, 238;
+    --bs-primary-text-emphasis: #4b00b5;
+    --bs-primary-bg-subtle: #e9d8fd;
+    --bs-primary-border-subtle: #b794f4;
+
+    /* Light Background with Pink Tint */
+    --bs-light: #fcf3ff;
+    --bs-light-rgb: 255, 245, 247;
+        
+    
+    /* Links */
+    --bs-link-color: #6200ee;
+    --bs-link-color-rgb: 98, 0, 238;
+    --bs-link-hover-color: #4b00b5;
+    --bs-link-hover-color-rgb: 75, 0, 181;
+    
+    /* Buttons & Interactive Elements */
+    --bs-btn-hover-bg: #5000c4;
+    --bs-btn-active-bg: #4400aa;
+    --bs-btn-hover-border-color: #5000c4;
+    --bs-btn-active-border-color: #4400aa;
+    
+    /* Focus States */
+    --bs-focus-ring-color: rgba(98, 0, 238, 0.25);
+    
+    /* Badges */
+    --bs-badge-color: #fff;
+    
+    /* Cards & Shadows */
+    --bs-card-border-color: rgba(98, 0, 238, 0.125);
+    --bs-box-shadow: 0 0.5rem 1rem rgba(98, 0, 238, 0.15);
+    --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(98, 0, 238, 0.075);
+    
+    /* Forms */
+    --bs-form-valid-border-color: #6200ee;
+    --bs-form-focus-border-color: #6200ee;
+    --bs-form-valid-color: #6200ee;
+    
+    /* Modals */
+    --bs-modal-header-border-color: rgba(98, 0, 238, 0.1);
+    --bs-modal-footer-border-color: rgba(98, 0, 238, 0.1);
+    
+    /* Alerts */
+    --bs-alert-bg: rgba(98, 0, 238, 0.1);
+    --bs-alert-border-color: rgba(98, 0, 238, 0.2);
+    
+    /* Progress Bars */
+    --bs-progress-bar-bg: #6200ee;
+    
+    /* Borders */
+    --bs-border-color: rgba(98, 0, 238, 0.125);
+    
+    /* Background Utilities */
+    --bs-bg-opacity: 1;
+    
+    /* Text Colors */
+    --bs-text-opacity: 1;
+    
+    /* Secondary Colors (for contrast and complementary elements) */
+    --bs-secondary: #673ab7;
+    --bs-secondary-rgb: 103, 58, 183;
+    --bs-secondary-text-emphasis: #512e90;
+    --bs-secondary-bg-subtle: #ede7f6;
+    --bs-secondary-border-subtle: #b39ddb;
+
+    
+}
+.navbar {
+    --bs-navbar-active-color: var(--bs-primary);
+    --bs-navbar-hover-color: var(--bs-primary-text-emphasis);
+}
+.card {
+    --bs-card-border-color: var(--bs-border-color);
+    --bs-card-cap-bg: var(--bs-primary-bg-subtle);
+}
+.btn-primary {
+    --bs-btn-bg: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-hover-bg: var(--bs-btn-hover-bg);
+    --bs-btn-hover-border-color: var(--bs-btn-hover-border-color);
+    --bs-btn-active-bg: var(--bs-btn-active-bg);
+    --bs-btn-active-border-color: var(--bs-btn-active-border-color);
+}
+.form-control:focus {
+    border-color: var(--bs-form-focus-border-color);
+    box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+}
+
+/* Additional utility classes for the primary color */
+.bg-primary-subtle {
+    background-color: var(--bs-primary-bg-subtle) !important;
+}
+
+.text-primary-subtle {
+    color: var(--bs-primary-text-emphasis) !important;
+}
+
+.border-primary-subtle {
+    border-color: var(--bs-primary-border-subtle) !important;
+}
+
+.bg-light {
+    background-color: var(--bs-light) !important;
+}
+
+
+
+
+
+
+/* Responsive font sizes */
+    @media (min-width: 992px) {
+      .offer-title {
+          font-size: 1.5rem;
+      }
+      .offer-price {
+          font-size: 2rem;
+      }
+  }
+  
+  @media (max-width: 991.98px) {
+      .offer-title {
+          font-size: 1.25rem;
+      }
+      .offer-price {
+          font-size: 1.75rem;
+      }
+  }
+
+  /* Ensure consistent box heights */
+  .advantage-box {
+      height: 100%;
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .advantage-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+}
+
+  /* Maintain consistent text display */
+  .advantage-title {
+      min-height: 2.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .advantage-description {
+      min-height: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+
+  @media (max-width: 768px) {
+    .advantage-box {
+        min-height: 90px;
+        padding: 0.75rem !important;
+    }
+    
+    .advantage-box p {
+        font-size: 0.75rem;
+    }
+}

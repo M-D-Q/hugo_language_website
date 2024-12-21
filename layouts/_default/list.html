@@ -1,0 +1,184 @@
+{{ define "main" }}
+<div class="blog-listing py-5">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="row justify-content-center mb-5" style="padding-top: 5vh ;">
+            <div class="col-lg-8 text-center">
+                <span class="badge bg-primary mb-2">Blog</span>
+                <h1 class="h2 fw-bold mb-2">{{ .Title }}</h1>
+                {{ with .Description }}
+                    <p class="lead small">{{ . }}</p>
+                {{ end }}
+                {{ .Content }}
+            </div>
+        </div>
+
+<!-- Blog Posts Grid -->
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        {{ range .Pages }}
+        {{ $post := . }}
+
+
+
+        <article class="blog-card bg-white shadow-sm rounded-3 mb-4">
+            <a href="{{ $post.RelPermalink }}" class="text-decoration-none text-dark">
+                <div class="row g-0">
+                    <div class="col-md-4 d-flex align-items-center">  <!-- Added d-flex and align-items-center -->
+                        <div class="blog-image-wrapper rounded-3 w-100">  <!-- Added rounded-3 and w-100 -->
+                            {{ if $post.Params.youtube_id }}
+                                <img src="https://img.youtube.com/vi/{{ $post.Params.youtube_id }}/sddefault.jpg" 
+                                     alt="{{ $post.Title }}" 
+                                     class="img-cover rounded-3">  <!-- Added rounded-3 -->
+                                <div class="video-overlay rounded-3">  <!-- Added rounded-3 -->
+                                    <div class="play-button">
+                                        <i class="bi bi-play-circle-fill"></i>
+                                    </div>
+                                </div>
+                            {{ else if $post.Params.featured_image }}
+                                <img src="{{ $post.Params.featured_image }}" 
+                                     alt="{{ $post.Title }}" 
+                                     class="img-cover rounded-3">  <!-- Added rounded-3 -->
+                            {{ else }}
+                                <img src="/api/placeholder/400/300" 
+                                     alt="{{ $post.Title }}" 
+                                     class="img-cover rounded-3">  <!-- Added rounded-3 -->
+                            {{ end }}
+                        </div>
+                    </div>
+                    <div class="col-md{{ if or $post.Params.featured_image $post.Params.youtube_id }}-8{{ end }}">
+                        <div class="card-body p-4">
+                            <!-- Category & Date -->
+                            <div class="d-flex align-items-center mb-3">
+                                {{ with $post.Params.category }}
+                                <span class="badge bg-primary-subtle text-primary me-2">{{ . }}</span>
+                                {{ end }}
+                                {{ if $post.Params.youtube_id }}
+                                <span class="badge bg-danger text-white me-2">Vidéo</span>
+                                {{ end }}
+                                <small class="text-muted">{{ $post.Date.Format "02/01/2006" }}</small>
+                            </div>
+                            
+                            <!-- Title & Summary -->
+                            <h2 class="h4 fw-bold mb-3">{{ $post.Title }}</h2>
+                            <p class="text-muted mb-3">{{ $post.Summary }}</p>
+                            
+                            <!-- Reading Time & Author -->
+                            <div class="d-flex align-items-center">
+                                <div class="small text-muted">
+                                    {{ $readingTime := math.Round (div (countwords $post.Content) 200.0) }}
+                                    <span class="me-3">
+                                        <i class="bi bi-clock me-1"></i>
+                                        {{ $readingTime }} min de lecture
+                                    </span>
+                                    {{ with $post.Params.author }}
+                                    <span>
+                                        <i class="bi bi-person me-1"></i>
+                                        {{ . }}
+                                    </span>
+                                    {{ end }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </article>
+        {{ end }}
+    </div>
+</div>
+
+
+
+
+    </div>
+</div>
+
+
+<style>
+/* Blog List Styles */
+.blog-card {
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.blog-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Image wrapper with enforced 16:9 ratio */
+.blog-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    background: #f8f9fa;
+}
+
+.img-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Video Overlay Styles */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    pointer-events: none;
+}
+
+.play-button {
+    color: white;
+    font-size: 3rem;
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.blog-card:hover .video-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.blog-card:hover .play-button {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* Make entire card clickable */
+.blog-card a {
+    display: block;
+    color: inherit;
+}
+
+.blog-card a:hover {
+    text-decoration: none;
+}
+
+/* Category Badge Styles */
+.bg-primary-subtle {
+    background-color: rgba(var(--bs-primary-rgb), 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .blog-card:hover {
+        transform: none;
+    }
+    
+    .card-body {
+        padding: 1.25rem !important;
+    }
+}
+    </style>
+{{ end }}

@@ -1,0 +1,194 @@
+<section id="blog" class="py-5 bg-light">
+    <div class="container"  style="padding-top: 2vh">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <span class="badge bg-primary mb-2">Blog</span>
+                <h2 class="h2 fw-bold mb-2">Actualités et Ressources</h2>
+                <p class="lead small">Découvrez nos articles sur l'apprentissage du russe et la culture d'entreprise</p>
+            </div>
+        </div>
+        <div class="position-relative"> <!-- New outer container -->
+            <!-- Navigation buttons moved outside -->
+            <div class="blog-navigation d-none d-md-block">
+                <button class="btn btn-primary btn-sm rounded-circle blog-prev" aria-label="Article précédent">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
+                <button class="btn btn-primary btn-sm rounded-circle blog-next" aria-label="Article suivant">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
+            </div>
+            
+        <div class="blog-swiper-container">
+            <div class="blog-swiper">
+                <div class="swiper-wrapper">
+                    {{ $posts := where .Site.RegularPages "Section" "posts" }}
+                    {{ range first 6 $posts.ByDate.Reverse }}
+                    <div class="swiper-slide h-auto">
+                        <article class="card border-0 shadow-sm h-100">
+                            <div class="card-img-wrapper position-relative">
+                                {{ if .Params.youtube_id }}
+                                    <!-- YouTube Thumbnail -->
+                                    <img src="https://img.youtube.com/vi/{{ .Params.youtube_id }}/maxresdefault.jpg" 
+                                         class="card-img-top" alt="{{ .Title }}" loading="lazy">
+                                    <!-- Play Button Overlay -->
+                                    <div class="youtube-overlay">
+                                        <div class="play-button">
+                                            <i class="bi bi-play-circle-fill"></i>
+                                        </div>
+                                    </div>
+                                {{ else if .Params.featured_image }}
+                                    <img src="{{ .Params.featured_image }}" 
+                                         class="card-img-top" alt="{{ .Title }}" loading="lazy">
+                                {{ end }}
+                            </div>
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-3">
+                                    {{ if .Params.youtube_id }}
+                                        <span class="badge bg-danger text-white me-2">Vidéo</span>
+                                    {{ end }}
+                                    <small class="text-muted">{{ .Date.Format "02/01/2006" }}</small>
+                                </div>
+                                <h3 class="h5 fw-bold mb-3">
+                                    <a href="{{ .Permalink }}" class="text-decoration-none text-dark stretched-link">
+                                        {{ .Title }}
+                                    </a>
+                                </h3>
+                                <p class="small text-muted mb-0">{{ .Summary | truncate 120 }}</p>
+                            </div>
+                        </article>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+
+
+
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <a href="/posts" class="btn btn-outline-primary">
+                    Voir tous les articles
+                    <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</section>
+
+<style>
+.blog-swiper-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.blog-swiper {
+    width: 100%;
+    position: relative;
+}
+
+.card-img-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blog-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: auto;
+}
+
+.blog-navigation button {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    padding: 90;
+}
+
+.blog-prev {
+    left: -50px;
+}
+
+.blog-next {
+    right: -50px;
+}
+
+.card {
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .blog-swiper-container {
+        padding: 0;
+    }
+    
+    .card {
+        margin: 0.5rem 0;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+}
+
+
+
+/* Add this to your existing blog-preview styles */
+.youtube-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.play-button {
+    font-size: 3rem;
+    color: white;
+    opacity: 0.9;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card:hover .youtube-overlay {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.card:hover .play-button {
+    transform: scale(1.1);
+    opacity: 1;
+}
+</style>
+
+
