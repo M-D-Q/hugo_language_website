@@ -4,30 +4,50 @@
         <div class="row justify-content-center mb-5">
             <div class="col-lg-8 text-center">
                 <span class="badge bg-primary mb-2">Qui suis-je ?</span>
-                <h2 class="h2 fw-bold">Mon Expérience mise au service de vos Ambitions</h2>
+                <h2 class="h2 fw-bold">Mon Expérience mise au Service de vos Ambitions</h2>
             </div>
         </div>
 
         <!-- Main Content Container -->
         <div class="row justify-content-center">
-            <div class="col-lg-8 ">
+            <div class="col-lg-8">
                 <div class="about-content-wrapper bg-light shadow-sm rounded-3 p-4">
                     <!-- Profile Section -->
-                    <div class="about-profile-section card border-0 mb-4 ">
-                        <div class="row g-0 ">
-                            <div class="col-md-4 ">
+                    <div class="about-profile-section card border-0 mb-4">
+                        <div class="row g-0">
+                            <div class="col-md-4">
                                 <div class="bg-light d-flex align-items-center justify-content-center">
                                     <img src="/img/hero-bg_opti_extra-small.png" alt="Olessia Melnyk" class="about-profile-image">
                                 </div>
                             </div>
                             <div class="col-md-8 shadow-sm">
-                                <div class="card-body p-4 ">
-                                    <h3 class="h5 fw-bold text-primary mb-1">Olessia Melnyk</h3>
+                                <div class="card-body p-4">
+                                    <h3 class="h5 fw-bold text-primary mb-3">Olessia Melnyk</h3>
                                     <p class="text-muted small mb-3">Formatrice Experte en langue Russe</p>
-                                    <p class="small mb-3">+ de 8 ans d'expérience en formation linguistique</p>
-                                    <button type="button" class="btn btn-primary small" data-bs-toggle="modal" data-bs-target="#profileModal">
-                                        Mon parcours en détails →
-                                    </button>
+                                    <p class="small mb-3">+ de 8 ans d'expérience en formation linguistique et en psychothérapie</p>
+                                    <div class="d-flex justify-content-center gap-2 mb-4">
+                                        <a href="https://www.olessia.fr" target="_blank" rel="noopener" 
+                                           class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                            <i class="bi bi-star-fill me-2"></i>
+                                            Mon site de Psychologie
+                                        </a>
+                                        <a href="https://www.youtube.com/@ApprendrelerusseavecOlessia" target="_blank" rel="noopener" 
+                                           class="btn btn-outline-danger btn-sm d-flex align-items-center">
+                                            <i class="bi bi-youtube me-2"></i>
+                                            Ma Chaîne YouTube
+                                        </a>
+                                        <a href="https://www.superprof.fr/professeure-native-experimente-donne-cours-niveaux-600-etudiants-accompagnes-2016-methode.html" target="_blank" rel="noopener" 
+                                           class="btn btn-outline-primary btn-sm d-flex align-items-center">
+                                            <i class="bi bi-star-fill me-2"></i>
+                                            Mon Profil Superprof
+                                        </a>
+                                    </div>
+                                    <div class="d-flex flex-column gap-3">
+                                        <button type="button" class="btn btn-primary small" data-bs-toggle="modal" data-bs-target="#profileModal">
+                                            Mon parcours en détails →
+                                        </button>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -149,58 +169,71 @@
 </section>
 
 <style>
-/* About Section Specific Styles */
-.about-section {
-    position: relative;
-}
-
-.about-content-wrapper {
-    overflow: hidden;
-}
-
-/* Profile Styles */
-.about-profile-image {
-    height: 30vh;
-    object-fit: cover;
-}
-
-/* Action Cards Styles */
-.about-action-card {
-    background: none;
-    transition: transform 0.3s ease;
-}
-
-.about-action-card:hover {
-    transform: translateY(-3px);
-}
-
-.about-action-card .card {
-    transition: box-shadow 0.3s ease;
-}
-
-.about-action-card:hover .card {
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
-}
-
-/* Modal Styles */
-.modal-content {
-    border: none;
-    box-shadow: 0 1rem 3rem rgba(0,0,0,0.175);
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
+    /* Profile Image Styles - Adjusted size */
+    .about-profile-section .col-md-4 {
+        min-height: 100%;
+        background-color: var(--bs-light) ;
+    }
+    
+    .about-profile-section .bg-light {
+        height: 250px; /* Fixed height for better proportion */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
     .about-profile-image {
-        width: auto;
-        height: 20vh;
-    }
 
-    .about-action-card:hover {
-        transform: none;
+        object-fit: fit;
+        max-height: 250px; /* Match container height */
     }
-
+    
+    /* Keep existing styles */
+    .about-section {
+        position: relative;
+    }
+    
     .about-content-wrapper {
-        padding: 1rem !important;
+        overflow: hidden;
     }
-}
-</style>
+    
+    .about-action-card {
+        background: none;
+        transition: transform 0.3s ease;
+    }
+    
+    .about-action-card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .about-action-card .card {
+        transition: box-shadow 0.3s ease;
+    }
+    
+    .about-action-card:hover .card {
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+    }
+    
+    .modal-content {
+        border: none;
+        box-shadow: 0 1rem 3rem rgba(0,0,0,0.175);
+    }
+    
+    @media (max-width: 768px) {
+        .about-profile-section .bg-light {
+            height: 200px; /* Slightly smaller on mobile */
+        }
+        
+        .about-profile-image {
+            max-height: 200px;
+        }
+    
+        .about-action-card:hover {
+            transform: none;
+        }
+    
+        .about-content-wrapper {
+            padding: 1rem !important;
+        }
+    }
+    </style>
