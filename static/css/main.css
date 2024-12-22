@@ -1,4 +1,44 @@
 :root {
+
+    .btn-primary {
+        --bs-btn-color: #fff;
+        --bs-btn-bg: #6200ee;  /* Using the primary color directly */
+        --bs-btn-border-color: #6200ee;
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: #5000c4;  /* Slightly darker shade for hover */
+        --bs-btn-hover-border-color: #5000c4;
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: #4400aa;  /* Even darker for active state */
+        --bs-btn-active-border-color: #4400aa;
+        --bs-btn-disabled-color: #fff;
+        --bs-btn-disabled-bg: #6200ee;
+        --bs-btn-disabled-border-color: #6200ee;
+    }
+    
+    .btn-outline-primary {
+        --bs-btn-color: var(--bs-primary);
+        --bs-btn-border-color: var(--bs-primary);
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: var(--bs-primary);
+        --bs-btn-hover-border-color: var(--bs-primary);
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: var(--bs-primary);
+        --bs-btn-active-border-color: var(--bs-primary);
+        --bs-btn-disabled-color: var(--bs-primary);
+    }
+    
+    .btn-outline-secondary {
+        --bs-btn-color: var(--bs-secondary);
+        --bs-btn-border-color: var(--bs-secondary);
+        --bs-btn-hover-color: #fff;
+        --bs-btn-hover-bg: var(--bs-secondary);
+        --bs-btn-hover-border-color: var(--bs-secondary);
+        --bs-btn-active-color: #fff;
+        --bs-btn-active-bg: var(--bs-secondary);
+        --bs-btn-active-border-color: var(--bs-secondary);
+        --bs-btn-disabled-color: var(--bs-secondary);
+    }
+
     /* Primary Colors */
     --bs-primary: #6200ee;
     --bs-primary-rgb: 98, 0, 238;
