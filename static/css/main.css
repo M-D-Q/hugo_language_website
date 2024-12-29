@@ -1,151 +1,290 @@
 :root {
+    /* Color System */
+    /* Primary: Arctic Blue - crisp, icy */
+    --bs-primary: #7BB5D9;
+    --bs-primary-rgb: 123, 181, 217;
+    --bs-primary-text-emphasis: #4B8DB8;
+    --bs-primary-bg-subtle: #EFF6FA;
+    --bs-primary-border-subtle: #C5E0F0;
 
-    .btn-primary {
-        --bs-btn-color: #fff;
-        --bs-btn-bg: #6200ee;  /* Using the primary color directly */
-        --bs-btn-border-color: #6200ee;
-        --bs-btn-hover-color: #fff;
-        --bs-btn-hover-bg: #5000c4;  /* Slightly darker shade for hover */
-        --bs-btn-hover-border-color: #5000c4;
-        --bs-btn-active-color: #fff;
-        --bs-btn-active-bg: #4400aa;  /* Even darker for active state */
-        --bs-btn-active-border-color: #4400aa;
-        --bs-btn-disabled-color: #fff;
-        --bs-btn-disabled-bg: #6200ee;
-        --bs-btn-disabled-border-color: #6200ee;
-    }
-    
-    .btn-outline-primary {
-        --bs-btn-color: var(--bs-primary);
-        --bs-btn-border-color: var(--bs-primary);
-        --bs-btn-hover-color: #fff;
-        --bs-btn-hover-bg: var(--bs-primary);
-        --bs-btn-hover-border-color: var(--bs-primary);
-        --bs-btn-active-color: #fff;
-        --bs-btn-active-bg: var(--bs-primary);
-        --bs-btn-active-border-color: var(--bs-primary);
-        --bs-btn-disabled-color: var(--bs-primary);
-    }
-    
-    .btn-outline-secondary {
-        --bs-btn-color: var(--bs-secondary);
-        --bs-btn-border-color: var(--bs-secondary);
-        --bs-btn-hover-color: #fff;
-        --bs-btn-hover-bg: var(--bs-secondary);
-        --bs-btn-hover-border-color: var(--bs-secondary);
-        --bs-btn-active-color: #fff;
-        --bs-btn-active-bg: var(--bs-secondary);
-        --bs-btn-active-border-color: var(--bs-secondary);
-        --bs-btn-disabled-color: var(--bs-secondary);
-    }
+    /* Secondary: Warm Sand - natural, welcoming */
+    --bs-secondary: #D4C4B7;
+    --bs-secondary-rgb: 212, 196, 183;
+    --bs-secondary-text-emphasis: #A99B91;
+    --bs-secondary-bg-subtle: #FAF7F5;
+    --bs-secondary-border-subtle: #E9E0D8;
 
-    /* Primary Colors */
-    --bs-primary: #6200ee;
-    --bs-primary-rgb: 98, 0, 238;
-    --bs-primary-text-emphasis: #4b00b5;
-    --bs-primary-bg-subtle: #e9d8fd;
-    --bs-primary-border-subtle: #b794f4;
+    /* Light Background */
+    --bs-light: #f8f9fa;
+    --bs-light-rgb: 248, 249, 250;
 
-    /* Light Background with Pink Tint */
-    --bs-light: #fcf3ff;
-    --bs-light-rgb: 255, 245, 247;
-        
-    
     /* Links */
-    --bs-link-color: #6200ee;
-    --bs-link-color-rgb: 98, 0, 238;
-    --bs-link-hover-color: #4b00b5;
-    --bs-link-hover-color-rgb: 75, 0, 181;
-    
-    /* Buttons & Interactive Elements */
-    --bs-btn-hover-bg: #5000c4;
-    --bs-btn-active-bg: #4400aa;
-    --bs-btn-hover-border-color: #5000c4;
-    --bs-btn-active-border-color: #4400aa;
-    
-    /* Focus States */
-    --bs-focus-ring-color: rgba(98, 0, 238, 0.25);
-    
-    /* Badges */
-    --bs-badge-color: #fff;
-    
-    /* Cards & Shadows */
-    --bs-card-border-color: rgba(98, 0, 238, 0.125);
-    --bs-box-shadow: 0 0.5rem 1rem rgba(98, 0, 238, 0.15);
-    --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(98, 0, 238, 0.075);
-    
-    /* Forms */
-    --bs-form-valid-border-color: #6200ee;
-    --bs-form-focus-border-color: #6200ee;
-    --bs-form-valid-color: #6200ee;
-    
-    /* Modals */
-    --bs-modal-header-border-color: rgba(98, 0, 238, 0.1);
-    --bs-modal-footer-border-color: rgba(98, 0, 238, 0.1);
-    
-    /* Alerts */
-    --bs-alert-bg: rgba(98, 0, 238, 0.1);
-    --bs-alert-border-color: rgba(98, 0, 238, 0.2);
-    
-    /* Progress Bars */
-    --bs-progress-bar-bg: #6200ee;
-    
-    /* Borders */
-    --bs-border-color: rgba(98, 0, 238, 0.125);
-    
-    /* Background Utilities */
-    --bs-bg-opacity: 1;
-    
-    /* Text Colors */
-    --bs-text-opacity: 1;
-    
-    /* Secondary Colors (for contrast and complementary elements) */
-    --bs-secondary: #673ab7;
-    --bs-secondary-rgb: 103, 58, 183;
-    --bs-secondary-text-emphasis: #512e90;
-    --bs-secondary-bg-subtle: #ede7f6;
-    --bs-secondary-border-subtle: #b39ddb;
+    --bs-link-color: var(--bs-primary);
+    --bs-link-color-rgb: var(--bs-primary-rgb);
+    --bs-link-hover-color: #4B8DB8;
+    --bs-link-hover-color-rgb: 75, 141, 184;
+}
 
-    
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4A5568;
+    background-color: #ffffff;
 }
-.navbar {
-    --bs-navbar-active-color: var(--bs-primary);
-    --bs-navbar-hover-color: var(--bs-primary-text-emphasis);
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Spectral', serif;
+    font-weight: 600;
+    color: #2D3748;
 }
-.card {
-    --bs-card-border-color: var(--bs-border-color);
-    --bs-card-cap-bg: var(--bs-primary-bg-subtle);
+h1 {
+    font-style: italic;
 }
+
+.display-4 {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.lead {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+}
+
+/* Button Styles */
+.btn {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    font-size: 1rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
 .btn-primary {
+    --bs-btn-color: #fff;
     --bs-btn-bg: var(--bs-primary);
     --bs-btn-border-color: var(--bs-primary);
-    --bs-btn-hover-bg: var(--bs-btn-hover-bg);
-    --bs-btn-hover-border-color: var(--bs-btn-hover-border-color);
-    --bs-btn-active-bg: var(--bs-btn-active-bg);
-    --bs-btn-active-border-color: var(--bs-btn-active-border-color);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #4B8DB8;
+    --bs-btn-hover-border-color: #4B8DB8;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #3A7CA6;
+    --bs-btn-active-border-color: #3A7CA6;
+    opacity: 80%;
+    box-shadow: 0 2px 4px rgba(123, 181, 217, 0.2);
 }
+
+.btn-primary:hover {
+    box-shadow: 0 4px 8px rgba(123, 181, 217, 0.3);
+    transform: translateY(-1px);
+    opacity: 1 !important;
+}
+
+.btn-outline-primary {
+    border-color: var(--bs-primary);
+    color: var(--bs-primary);
+    box-shadow: 0 2px 4px rgba(123, 181, 217, 0.1);
+    
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(123, 181, 217, 0.2);
+    transform: translateY(-1px);
+    opacity: 1 !important;
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    background: linear-gradient(145deg, #ffffff, var(--bs-primary-bg-subtle));
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Navigation */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.navbar-brand {
+    font-family: 'Spectral', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--bs-primary);
+}
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+}
+
+.nav-link {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: #4A5568;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+    color: var(--bs-primary);
+    opacity: 1 !important;
+}
+
+/* Badge Styles */
+.badge {
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 0.7rem;
+    opacity: 70% !important;
+}
+
+.badge {
+    --bs-badge-bg: var(--bs-secondary) ;
+    background-color: var(--bs-secondary);
+    color: #fff ;
+}
+
+/* If you also want to style badge variants (though they'll be overridden by the above) */
+.badge.bg-primary {
+    --bs-badge-bg: var(--bs-secondary) !important;
+    background-color: var(--bs-secondary) !important;
+}
+
+.badge.bg-danger {
+    --bs-badge-bg: var(--bs-secondary) !important;
+    background-color: var(--bs-secondary) !important;
+}
+
+.badge.bg-secondary {
+    --bs-badge-bg: var(--bs-secondary) !important;
+    background-color: var(--bs-secondary) !important;
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 0.5rem;
+    border: 1px solid #E2E8F0;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+}
+
 .form-control:focus {
-    border-color: var(--bs-form-focus-border-color);
-    box-shadow: 0 0 0 0.25rem var(--bs-focus-ring-color);
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.1);
 }
 
-/* Additional utility classes for the primary color */
-.bg-primary-subtle {
-    background-color: var(--bs-primary-bg-subtle) !important;
-}
-
-.text-primary-subtle {
-    color: var(--bs-primary-text-emphasis) !important;
-}
-
-.border-primary-subtle {
-    border-color: var(--bs-primary-border-subtle) !important;
-}
-
+/* Section Backgrounds */
 .bg-light {
-    background-color: var(--bs-light) !important;
+    background: linear-gradient(135deg, #ffffff, var(--bs-primary-bg-subtle)) !important;
 }
 
+/* Testimonials Section */
+.testimonial-card {
+    background: linear-gradient(145deg, #ffffff, var(--bs-secondary-bg-subtle));
+    border: none;
+}
 
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #7BB5D9, #4B8DB8);
+    color: #fff;
+}
 
+.footer a {
+    color: rgba(255, 255, 255, 0.9);
+    transition: color 0.2s ease;
+}
 
+.footer a:hover {
+    color: #fff;
+    opacity: 1 !important;
+}
+
+/* Blog Cards */
+.blog-card {
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.blog-card img {
+    transition: transform 0.5s ease;
+}
+
+.blog-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Custom Background Utilities */
+.bg-gradient-light {
+    background: linear-gradient(135deg, #ffffff, var(--bs-primary-bg-subtle));
+}
+
+.bg-gradient-secondary {
+    background: linear-gradient(135deg, #ffffff, var(--bs-secondary-bg-subtle));
+}
+
+/* Hover States - Ensuring Visibility */
+.btn:hover, 
+.nav-link:hover, 
+.card:hover,
+.blog-card:hover,
+.testimonial-card:hover {
+    opacity: 1 !important;
+}
+
+/* Interactive Elements Hover Enhancement */
+[class*="btn-"]:hover {
+    filter: saturate(1.2) brightness(0.95);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    h1, .h1 {
+        font-size: 2rem;
+    }
+    
+    h2, .h2 {
+        font-size: 1.75rem;
+    }
+}
+
+/* FAQ Styles */
+.accordion-button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #2D3748;
+
+}
+
+.accordion-button:not(.collapsed) {
+    color: #2D3748;
+    background-color: var(--bs-primary-bg-subtle);
+}
