@@ -212,6 +212,7 @@
                                         Envoi en cours...
                                     </span>
                                 </button>
+                                <small id="submitMessage" class="text-muted mt-2 d-none">L'envoi peut prendre jusqu'à 20 secondes. Merci de patienter.</small>
                             </div>
                         </div>
                     </div>
@@ -297,34 +298,45 @@
     }
 }
 </style>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Copy email to hidden field
-        document.getElementById('email').addEventListener('input', function(e) {
-            document.querySelector('input[name="Email"]').value = e.target.value;
-        });
+        const contactForm = document.getElementById('contactForm');
+        const emailInput = document.getElementById('email');
+        const emailCopy = document.getElementById('emailCopy');
 
-        // Handle form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const button = document.getElementById('submitButton');
-            const buttonText = document.getElementById('buttonText');
-            const buttonSpinner = document.getElementById('buttonSpinner');
-            
-            // Disable button and show spinner
-            button.disabled = true;
-            buttonText.classList.add('d-none');
-            buttonSpinner.classList.remove('d-none');
-            
-            // Reset button after timeout (in case of submission failure)
-            setTimeout(() => {
-                if (button.disabled) {
-                    button.disabled = false;
-                    buttonText.classList.remove('d-none');
-                    buttonSpinner.classList.add('d-none');
-                }
-            }, 10000); // 10 second timeout
-        });
+        if (emailInput && emailCopy) {
+            // Copy email to hidden field
+            emailInput.addEventListener('input', function(e) {
+                emailCopy.value = e.target.value;
+            });
+        }
+
+        if (contactForm) {
+            // Handle form submission
+            contactForm.addEventListener('submit', function(e) {
+                const submitButton = document.getElementById('submitButton');
+                const buttonText = document.getElementById('buttonText');
+                const buttonSpinner = document.getElementById('buttonSpinner');
+                
+                // Disable button and show spinner
+                submitButton.disabled = true;
+                buttonText.classList.add('d-none');
+                buttonSpinner.classList.remove('d-none');
+                document.getElementById('submitMessage').classList.remove('d-none'); // When disabling button
+
+                
+                // Reset button after timeout (in case of submission failure)
+                setTimeout(() => {
+                    if (submitButton.disabled) {
+                        submitButton.disabled = false;
+                        buttonText.classList.remove('d-none');
+                        buttonSpinner.classList.add('d-none');
+                        document.getElementById('submitMessage').classList.add('d-none');    // In the timeout
+
+                    }
+                }, 20000); // Increased timeout to 20 seconds since FormSubmit is slow
+            });
+        }
 
         // Check for form submission success
         if (window.location.search.includes('submitted=true')) {
@@ -335,8 +347,12 @@
             // Clean up URL
             window.history.replaceState({}, document.title, window.location.pathname + '#contact');
             
-            // Reset form
-            document.querySelector('form').reset();
+            // Reset form if it exists
+            if (contactForm) {
+                contactForm.reset();
+            }
         }
+
+
     });
 </script>
