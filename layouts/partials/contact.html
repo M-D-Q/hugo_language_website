@@ -220,47 +220,6 @@
         </div>
     </div>
 
-    <!-- Contact Form JavaScript -->
-    <script>
-        // Copy email to hidden field
-        document.getElementById('email').addEventListener('input', function(e) {
-            document.querySelector('input[name="Email"]').value = e.target.value;
-        });
-
-        // Handle form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const button = document.getElementById('submitButton');
-            const buttonText = document.getElementById('buttonText');
-            const buttonSpinner = document.getElementById('buttonSpinner');
-            
-            // Disable button and show spinner
-            button.disabled = true;
-            buttonText.classList.add('d-none');
-            buttonSpinner.classList.remove('d-none');
-            
-            // Reset button after timeout (in case of submission failure)
-            setTimeout(() => {
-                if (button.disabled) {
-                    button.disabled = false;
-                    buttonText.classList.remove('d-none');
-                    buttonSpinner.classList.add('d-none');
-                }
-            }, 10000); // 10 second timeout
-        });
-
-        // Check for form submission success
-        if (window.location.search.includes('submitted=true')) {
-            // Show success modal
-            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-            successModal.show();
-            
-            // Clean up URL
-            window.history.replaceState({}, document.title, window.location.pathname + '#contact');
-            
-            // Reset form
-            document.querySelector('form').reset();
-        }
-    </script>
 
     <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
@@ -338,3 +297,46 @@
     }
 }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Copy email to hidden field
+        document.getElementById('email').addEventListener('input', function(e) {
+            document.querySelector('input[name="Email"]').value = e.target.value;
+        });
+
+        // Handle form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const button = document.getElementById('submitButton');
+            const buttonText = document.getElementById('buttonText');
+            const buttonSpinner = document.getElementById('buttonSpinner');
+            
+            // Disable button and show spinner
+            button.disabled = true;
+            buttonText.classList.add('d-none');
+            buttonSpinner.classList.remove('d-none');
+            
+            // Reset button after timeout (in case of submission failure)
+            setTimeout(() => {
+                if (button.disabled) {
+                    button.disabled = false;
+                    buttonText.classList.remove('d-none');
+                    buttonSpinner.classList.add('d-none');
+                }
+            }, 10000); // 10 second timeout
+        });
+
+        // Check for form submission success
+        if (window.location.search.includes('submitted=true')) {
+            const successModal = document.getElementById('successModal');
+            const bsModal = new bootstrap.Modal(successModal);
+            bsModal.show();
+            
+            // Clean up URL
+            window.history.replaceState({}, document.title, window.location.pathname + '#contact');
+            
+            // Reset form
+            document.querySelector('form').reset();
+        }
+    });
+</script>
