@@ -1,0 +1,60 @@
+    <!-- Contact Form -->
+    
+</section>
+
+<style>
+/* Existing styles */
+.contact-card {
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+}
+
+.contact-card:hover .card {
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15) !important;
+}
+
+.contact-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.alert {
+    background-color: rgba(var(--bs-primary-rgb), 0.03);
+}
+
+/* Form Styles */
+.contact-form-wrapper {
+    background: linear-gradient(145deg, #ffffff, var(--bs-primary-bg-subtle));
+}
+
+.form-control, .form-select {
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.1);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.1);
+}
+
+.form-label {
+    color: #4A5568;
+    margin-bottom: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        padding: 1rem !important;
+    }
+    
+    .contact-card:hover {
+        transform: none;
+    }
+}

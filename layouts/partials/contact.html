@@ -134,6 +134,105 @@
             </div>
         </div>
     </div>
+    <!-- Contact Form -->
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="contact-form-wrapper bg-white shadow-sm rounded-3 p-4">
+                <h3 class="h5 fw-bold mb-4 text-center">Demander plus d'informations</h3>
+                
+                <form id="contactForm" action="https://formsubmit.co/russe.avec.olessia@gmail.com" method="POST" enctype="multipart/form-data">
+                    <!-- FormSubmit Configuration -->
+                    <input type="text" name="_honey" style="display:none">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_subject" value="Nouvelle demande de contact - RussePro">
+                    <input type="hidden" name="_next" value="/?submitted=true#contact">
+                    
+                    <div class="row g-4">
+                        <!-- Name -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label small fw-semibold">Nom complet</label>
+                                <input type="text" class="form-control" name="Nom" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label small fw-semibold">Email</label>
+                                <input type="email" class="form-control" name="_replyto" required>
+                                <input type="hidden" name="Email">
+                            </div>
+                        </div>
+                        
+                        <!-- Phone -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label small fw-semibold">Téléphone</label>
+                                <input type="tel" class="form-control" name="Téléphone">
+                            </div>
+                        </div>
+                        
+                        <!-- Interest -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label small fw-semibold">Je suis intéressé(e) par</label>
+                                <select class="form-select" name="Type de formation" required>
+                                    <option value="">Choisissez une option...</option>
+                                    <option value="Formation individuelle">Formation individuelle</option>
+                                    <option value="Formation en groupe">Formation en groupe</option>
+                                    <option value="Formation entreprise">Formation entreprise</option>
+                                    <option value="Autre demande">Autre demande</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Message -->
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label class="form-label small fw-semibold">Message</label>
+                                <textarea class="form-control" name="Message" rows="4" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="col-12">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary" id="submitButton">
+                                    <span class="button-text">
+                                        Envoyer ma demande
+                                        <i class="bi bi-arrow-right ms-2"></i>
+                                    </span>
+                                    <span class="button-loader d-none">
+                                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        Envoi en cours...
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="success-icon mb-4">
+                        <i class="bi bi-check-circle-fill text-success display-1"></i>
+                    </div>
+                    <h3 class="h4 fw-bold mb-3">Message envoyé avec succès !</h3>
+                    <p class="text-muted mb-4">Merci de votre intérêt. Je vous répondrai dans les plus brefs délais.</p>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        Fermer
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <style>
@@ -159,6 +258,63 @@
 .alert {
     background-color: rgba(var(--bs-primary-rgb), 0.03);
 }
+
+
+/* Form Styles */
+.contact-form-wrapper {
+    background: linear-gradient(145deg, #ffffff, var(--bs-primary-bg-subtle));
+}
+
+.form-control, .form-select {
+    border: 1px solid rgba(var(--bs-primary-rgb), 0.1);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--bs-primary);
+    box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.1);
+}
+
+.form-label {
+    color: #4A5568;
+    margin-bottom: 0.5rem;
+}
+
+/* Form Submit Button */
+.btn .button-loader {
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Success Modal */
+.success-icon {
+    animation: scaleIn 0.3s ease-in-out;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Modal */
+.modal-content {
+    border: none;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.175);
+}
+
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {

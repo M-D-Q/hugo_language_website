@@ -74,3 +74,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+    // Handle contact form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            const submitButton = document.getElementById('submitButton');
+            const buttonText = submitButton.querySelector('.button-text');
+            const buttonLoader = submitButton.querySelector('.button-loader');
+            
+            // Show loading state
+            submitButton.disabled = true;
+            buttonText.classList.add('d-none');
+            buttonLoader.classList.remove('d-none');
+
+            // We don't prevent default because we want the form to actually submit
+            // After submission, FormSubmit will redirect back to our page
+            
+            // Reset form and show success modal after successful submission
+            // We'll detect if we're returning from a submission by checking for a URL parameter
+            if (window.location.search.includes('submitted=true')) {
+                // Clear the form
+                contactForm.reset();
+                
+                // Show success modal
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+                
+                // Clean up URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    }
