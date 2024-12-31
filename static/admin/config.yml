@@ -1,0 +1,84 @@
+backend:
+  name: git-gateway
+  branch: main
+  repo: M-D-Q/hugo_language_website
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
+
+# These URLs should be updated to match your site
+site_url: https://corporaterussian.netlify.app
+display_url: https://corporaterussian.netlify.app
+
+media_folder: "static/img/uploads"
+public_folder: "/img/uploads"
+publish_mode: editorial_workflow
+locale: 'fr'
+
+collections:
+  - name: "posts"
+    label: "Articles"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "posts/{{slug}}"
+    format: "toml-frontmatter"
+    extension: "md"
+    frontmatter_delimiter: "+++"
+    fields:
+      - {label: "Type", name: "type", widget: "select", options: ["article", "video"], default: "article"}
+      - {label: "Titre", name: "title", widget: "string", hint: "Le titre de votre article"}
+      - {
+          label: "Date de publication", 
+          name: "date", 
+          widget: "datetime",
+          format: "YYYY-MM-DDTHH:mm:ss-07:00",
+          date_format: "DD/MM/YYYY",
+          time_format: "HH:mm",
+          hint: "Date et heure de publication"
+        }
+      - {label: "Brouillon", name: "draft", widget: "boolean", default: false}
+      - {
+          label: "ID YouTube", 
+          name: "youtube_id", 
+          widget: "string", 
+          required: false,
+          hint: "Pour les posts vidéo uniquement - l'identifiant de la vidéo YouTube (ex: VsqvEQKeAb4)",
+          pattern: ['^[a-zA-Z0-9_-]{11}$', "L'ID YouTube doit faire 11 caractères"]
+        }
+      - {
+          label: "Image à la une", 
+          name: "featured_image", 
+          widget: "image", 
+          required: false,
+          hint: "Pour les articles standards uniquement - l'image principale",
+          media_library: {
+            config: {
+              multiple: false
+            }
+          }
+        }
+      - {
+          label: "Tags", 
+          name: "tags", 
+          widget: "list",
+          required: false,
+          hint: "Mots-clés pour catégoriser l'article"
+        }
+      - {
+          label: "Résumé", 
+          name: "summary", 
+          widget: "text",
+          required: true,
+          hint: "Bref résumé de l'article qui apparaîtra dans les aperçus"
+        }
+      - {
+          label: "Contenu", 
+          name: "body", 
+          widget: "markdown",
+          hint: "Le contenu principal de votre article",
+          buttons: ["bold", "italic", "link", "heading-two", "heading-three", "quote", "bulleted-list", "numbered-list"]
+        }
