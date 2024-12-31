@@ -134,18 +134,20 @@
             </div>
         </div>
     </div>
+
+
     <!-- Contact Form -->
     <div class="row justify-content-center mt-5">
         <div class="col-lg-8">
             <div class="contact-form-wrapper bg-white shadow-sm rounded-3 p-4">
                 <h3 class="h5 fw-bold mb-4 text-center">Demander plus d'informations</h3>
                 
-                <form id="contactForm" action="https://formsubmit.co/russe.avec.olessia@gmail.com" method="POST" enctype="multipart/form-data">
+                <form id="contactForm" action="https://formsubmit.co/contact@russepro.fr" method="POST" enctype="multipart/form-data">
                     <!-- FormSubmit Configuration -->
                     <input type="text" name="_honey" style="display:none">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_subject" value="Nouvelle demande de contact - RussePro">
-                    <input type="hidden" name="_next" value="/?submitted=true#contact">
+                    <input type="hidden" name="_next" value="{{ .Site.BaseURL }}?submitted=true#contact">
                     
                     <div class="row g-4">
                         <!-- Name -->
@@ -160,8 +162,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-label small fw-semibold">Email</label>
-                                <input type="email" class="form-control" name="_replyto" required>
-                                <input type="hidden" name="Email">
+                                <input type="email" class="form-control" name="_replyto" id="email" required>
+                                <!-- Copy email to a regular field to show in the table -->
+                                <input type="hidden" name="Email" id="emailCopy">
                             </div>
                         </div>
                         
@@ -259,7 +262,6 @@
     background-color: rgba(var(--bs-primary-rgb), 0.03);
 }
 
-
 /* Form Styles */
 .contact-form-wrapper {
     background: linear-gradient(145deg, #ffffff, var(--bs-primary-bg-subtle));
@@ -314,7 +316,6 @@
     border: none;
     box-shadow: 0 1rem 3rem rgba(0,0,0,0.175);
 }
-
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {

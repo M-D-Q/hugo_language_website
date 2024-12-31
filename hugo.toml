@@ -1,4 +1,4 @@
-baseURL = '/'
+baseURL = 'corporaterussian.netlify.app'
 languageCode = 'fr-FR'
 title = 'Cours de russe pour des professionnels'
 subtitle = 'Devenez russophone'
